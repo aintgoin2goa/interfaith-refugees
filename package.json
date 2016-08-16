@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/aintgoin2goa/interfaith-refugees#readme",
   "dependencies": {
+    "cli-color": "^1.1.0",
     "co": "^4.6.0",
     "google-auth-library": "^0.9.8",
-    "googleapis": "^12.2.0"
+    "googleapis": "^12.2.0",
+    "lodash": "^4.15.0"
   },
   "devDependencies": {
     "handlebars": "^4.0.5",
