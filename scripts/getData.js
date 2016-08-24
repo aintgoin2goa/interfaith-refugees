@@ -106,6 +106,7 @@ function retrieveData(cb, auth) {
 			let data = rows.map(r => {
 				return {
 					name: r[1],
+					surname: r[0],
 					faith: r[2],
 					post: r[3],
 					email: r[5]

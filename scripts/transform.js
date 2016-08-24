@@ -1,28 +1,32 @@
 "use strict";
 const colors = require('./colors');
-const _ = require('lodash/core');
+const _ = require('lodash');
 
+const regexs = new Map();
 
-function check(item){
-	if(!item.name){
-		console.log(colors.warn(`Missing property name: ${JSON.stringify(item)}`))
-	}
+regexs.set('bishop', /bishop/i);
+regexs.set('honors', /(CBE|MBE|OBE|Lord|Lady)/);
 
-	if(!item.post){
-		console.log(colors.warn(`Missing property post: ${JSON.stringify(item)}`))
-	}
-}
 
 function transform(d){
-	let data = JSON.parse(JSON.stringify(d));
+	let data = _.cloneDeep(d);
+	let bishops = [];
+	let honors = [];
+	let noPost = [];
+	let theRest = [];
 	data.forEach((item, index) => {
-		
-	})
-	return sort(data);
-}
+		if(regexs.get('bishop').test(item.post)){
+			bishops.push(item);
+		}else if(regexs.get('honors').test(item.name)){
+			honors.push(item);
+		}else if(item.post.trim() === ''){
+			noPost.push(item);
+		}else{
+			theRest.push(item);
+		}
+	});
 
-function sort(data){
-	return _.sortBy(data, d => d.post);
+	return bishops.concat(honors).concat(theRest).concat(noPost);
 }
 
 module.exports = transform;

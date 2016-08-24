@@ -25,6 +25,9 @@
     "lodash": "^4.15.0"
   },
   "devDependencies": {
+    "aws-sdk": "^2.5.2",
+    "colors": "^1.1.2",
+    "dotenv": "^2.0.0",
     "handlebars": "^4.0.5",
     "node-sass": "^3.8.0",
     "static-server": "^2.0.3"
